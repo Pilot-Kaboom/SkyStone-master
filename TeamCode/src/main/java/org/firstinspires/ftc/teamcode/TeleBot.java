@@ -6,6 +6,7 @@ public abstract class TeleBot extends compiler {
     public Drive drive;
     public Intake intake;
     public Sensors sensor;
+    public Gyro gyro;
     @Override
     public void initiate(){
         arm = new Arm(this);
@@ -13,6 +14,7 @@ public abstract class TeleBot extends compiler {
         drive=new Drive(this);
         intake=new Intake(this);
         sensor=new Sensors(this);
+        gyro=new Gyro(this);
         drive.RunInPower();
         while(!opModeIsActive()){
             lift.resetEC();
