@@ -25,16 +25,33 @@ public class Sensors {
         lc= sensor.hardwareMap.get(ColorSensor.class, "lc");
         this.sensor=sensor;
     }
-
+    public int rc(){
+        return (rc.alpha());
+    }
+    public int lc(){
+        return (lc.alpha());
+    }
+    public double rd(){
+        return (rd.getDistance(DistanceUnit.INCH));
+    }
+    public double ld(){
+        return (ld.getDistance(DistanceUnit.INCH));
+    }
+    public double fd(){
+        return (fd.getDistance(DistanceUnit.INCH));
+    }
+    public double bd(){
+        return (bd.getDistance(DistanceUnit.INCH));
+    }
     public void telem(){
-        sensor.telemetry.addData("front distance", fd.getDistance(DistanceUnit.INCH));
-        sensor.telemetry.addData("back distance", bd.getDistance(DistanceUnit.INCH));
-        sensor.telemetry.addData("right distance", rd.getDistance(DistanceUnit.INCH));
-        sensor.telemetry.addData("left distance", ld.getDistance(DistanceUnit.INCH));
+        sensor.telemetry.addData("front distance", fd());
+        sensor.telemetry.addData("back distance", bd());
+        sensor.telemetry.addData("right distance", rd());
+        sensor.telemetry.addData("left distance", ld());
         sensor.telemetry.addData("right red color", rc.red());
         sensor.telemetry.addData("left red color", lc.red());
-        sensor.telemetry.addData("right color alpha", (rc.alpha()));
-        sensor.telemetry.addData("left color alpha", rc.alpha());
+        sensor.telemetry.addData("right color alpha", rc());
+        sensor.telemetry.addData("left color alpha", lc());
     }
 
 

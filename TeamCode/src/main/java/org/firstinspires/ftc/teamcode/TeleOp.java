@@ -50,7 +50,7 @@ public class TeleOp extends TeleBot {
             }
             //lift.manualmanual(gamepad2.right_stick_y);
 
-
+            sensor.telem();
             arm.telemetry();
             drive.ECtelem();
             lift.telem();
