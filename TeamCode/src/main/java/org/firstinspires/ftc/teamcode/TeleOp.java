@@ -25,13 +25,17 @@ public class TeleOp extends TeleBot {
 
             intake.intake(gamepad2.left_stick_y);
             intake.lift(gamepad1.right_stick_y<-.5,gamepad1.right_stick_x<-.5,gamepad1.right_stick_x>.5);
-
-            if(gamepad2.left_trigger>.2){
+            if (gamepad2.x){
+                arm.cap();
+                arm.clawcon(gamepad2.left_bumper, false);
+                lift.manual(gamepad2.left_stick_y, arm.elbowPosition()>.9);
+            }
+            else if(gamepad2.left_trigger>.2){
                 lift.grab(gamepad2.left_trigger>.2,arm.elbowPosition()>.9);
                 if(lift.echight()<350){
                     arm.clawcon(gamepad2.left_bumper, false);
-                    arm.elbowcon(gamepad2.right_bumper,lift.echight()>400, false, gamepad1.dpad_right, gamepad1.dpad_left);
-                    arm.wristcon(gamepad2.right_trigger>.2,lift.echight()>400, false, gamepad1.left_bumper, gamepad1.right_bumper);
+                    arm.elbowcon(gamepad2.right_bumper,lift.echight()>500, false, gamepad1.dpad_right, gamepad1.dpad_left);
+                    arm.wristcon(gamepad2.right_trigger>.2,lift.echight()>500, false, gamepad1.left_bumper, gamepad1.right_bumper);
 
                 }
                 else{
@@ -44,8 +48,8 @@ public class TeleOp extends TeleBot {
             else{
                 lift.manual(gamepad2.right_stick_y, arm.elbowPosition()>.9);
                 arm.clawcon(gamepad2.left_bumper, false);
-                arm.elbowcon(gamepad2.right_bumper,lift.echight()>400, false, gamepad1.dpad_right, gamepad1.dpad_left);
-                arm.wristcon(gamepad2.right_trigger>.2,lift.echight()>400, false, gamepad1.left_bumper, gamepad1.right_bumper);
+                arm.elbowcon(gamepad2.right_bumper,lift.echight()>500, false, gamepad1.dpad_right, gamepad1.dpad_left);
+                arm.wristcon(gamepad2.right_trigger>.2,lift.echight()>500, false, gamepad1.left_bumper, gamepad1.right_bumper);
 
             }
             //lift.manualmanual(gamepad2.right_stick_y);

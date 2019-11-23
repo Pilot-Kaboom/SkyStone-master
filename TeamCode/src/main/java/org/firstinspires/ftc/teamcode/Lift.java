@@ -106,8 +106,8 @@ public class Lift {
     }*/
     public void grab(boolean close, boolean armready){
         if(!armready) {
-            driver(450, true, false);
-            manual=450;
+            driver(550, true, false);
+            manual=550;
             armreallyready.reset();
         }
         else if(armreallyready.seconds()>1){
@@ -115,8 +115,8 @@ public class Lift {
             manual=150;
         }
         else{
-            driver(450, true, false);
-            manual=450;
+            driver(550, true, false);
+            manual=550;
         }
     }
     public void resetEC(){

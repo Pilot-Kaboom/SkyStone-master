@@ -23,15 +23,12 @@ public class BlueFoundation extends AutoBot {
         drive.StopMotors();
         drive.resetEC();
         time.reset();
-        while(time.seconds()<.5&& opModeIsActive()){
+        while(time.seconds()<.75&& opModeIsActive()){
             intake.intake(1);
         }
         intake.intake(0);
-        while(time.seconds()<.5&& opModeIsActive()){
-            drive.teledrive(.5,0,0);
-        }
-        while(time.seconds()<2.5&& opModeIsActive()){
-            drive.teledrive(-.33,0,-1);
+        while(time.seconds()<1.5&& opModeIsActive()){
+            drive.teledrive(-.5,0,-1);
         }
         drive.StopMotors();
         drive.resetEC();

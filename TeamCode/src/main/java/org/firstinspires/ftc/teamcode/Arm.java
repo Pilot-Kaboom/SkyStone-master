@@ -53,6 +53,10 @@ public class Arm {
             wrist.setPosition(.51);
         }
     }
+    public void cap(){
+        elbow.setPosition(.75);
+        wrist.setPosition(.37);
+    }
     //Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow
     public void elbowcon(boolean back, boolean highenough, boolean init, boolean increase, boolean decrease){
         if(back&& elbowtime.seconds()>.2){
