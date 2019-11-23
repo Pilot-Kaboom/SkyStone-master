@@ -64,11 +64,11 @@ public class Drive {
         BLM.setPower(0);
         BRM.setPower(0);
     }
-    public void teledrive(double forward, double right, double turnC, double turnCC){
-        FLM.setPower(-forward + right + turnC - turnCC);
-        FRM.setPower(forward + right + turnC - turnCC);
-        BLM.setPower(-forward - right  +turnC - turnCC);
-        BRM.setPower(forward - right + turnC - turnCC);
+    public void teledrive(double forward, double right, double turnC){
+        FLM.setPower(-forward + right + turnC);
+        FRM.setPower(forward + right + turnC);
+        BLM.setPower(-forward - right  +turnC);
+        BRM.setPower(forward - right + turnC);
     }
     public void diaginalFRtoBL(double power){
         FRM.setPower(power);
@@ -103,25 +103,25 @@ public class Drive {
         return( FLM.getCurrentPosition()/4 +  -BLM.getCurrentPosition()/4 + FRM.getCurrentPosition()/4 + -BRM.getCurrentPosition() / 4);
     }
     public double fcontrolp(double goal, double tune){
-        if((rect()-goal)*tune>1){
+        if(goal-(rect())*tune>1){
             return 1;
         }
-        else if((rect()-goal)*tune<-1){
+        else if(goal-(rect())*tune<-1){
             return -1;
         }
         else{
-            return ((rect()-goal)*tune);
+            return ((goal-rect())*tune);
         }
     }
     public double rcontrolp(double goal, double tune){
-        if((fect()-goal)*tune>1){
+        if((goal-fect())*tune>1){
             return 1;
         }
-        else if((fect()-goal)*tune<-1){
+        else if((-goal-fect())*tune<-1){
             return -1;
         }
         else{
-            return ((fect()-goal)*tune);
+            return ((goal-fect())*tune);
         }
     }
     public void ECforward(double distance, double power){

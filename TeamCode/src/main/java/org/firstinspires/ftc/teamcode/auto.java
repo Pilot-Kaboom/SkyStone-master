@@ -7,7 +7,7 @@ public class auto extends TeleBot {
     @Override
     public void run() {
         while(opModeIsActive() && drive.bect()>-300){
-            drive.teledrive(.5,0,0,0);
+            drive.teledrive(.5,0,0);
         }
         drive.StopMotors();
 
