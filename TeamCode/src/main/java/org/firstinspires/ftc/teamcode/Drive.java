@@ -58,11 +58,11 @@ public class Drive {
         BLM.setPower(-power);
         BRM.setPower(-power);
     }
-    public void StopMotors(double stop){
-        FLM.setPower(stop);
-        FRM.setPower(stop);
-        BLM.setPower(stop);
-        BRM.setPower(stop);
+    public void StopMotors(){
+        FLM.setPower(0);
+        FRM.setPower(0);
+        BLM.setPower(0);
+        BRM.setPower(0);
     }
     public void teledrive(double forward, double right, double turnC, double turnCC){
         FLM.setPower(-forward + right + turnC - turnCC);
@@ -101,6 +101,28 @@ public class Drive {
     }
     public int lect(){
         return( FLM.getCurrentPosition()/4 +  -BLM.getCurrentPosition()/4 + FRM.getCurrentPosition()/4 + -BRM.getCurrentPosition() / 4);
+    }
+    public double fcontrolp(double goal, double tune){
+        if((rect()-goal)*tune>1){
+            return 1;
+        }
+        else if((rect()-goal)*tune<-1){
+            return -1;
+        }
+        else{
+            return ((rect()-goal)*tune);
+        }
+    }
+    public double rcontrolp(double goal, double tune){
+        if((fect()-goal)*tune>1){
+            return 1;
+        }
+        else if((fect()-goal)*tune<-1){
+            return -1;
+        }
+        else{
+            return ((fect()-goal)*tune);
+        }
     }
     public void ECforward(double distance, double power){
         while(fect() < distance){
