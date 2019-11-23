@@ -65,10 +65,10 @@ public class Drive {
         BRM.setPower(0);
     }
     public void teledrive(double forward, double right, double turnC){
-        FLM.setPower(-forward + right + turnC);
-        FRM.setPower(forward + right + turnC);
-        BLM.setPower(-forward - right  +turnC);
-        BRM.setPower(forward - right + turnC);
+        FLM.setPower(forward + right + turnC);
+        FRM.setPower(-forward + right + turnC);
+        BLM.setPower(forward - right  +turnC);
+        BRM.setPower(-forward - right + turnC);
     }
     public void diaginalFRtoBL(double power){
         FRM.setPower(power);
@@ -90,16 +90,16 @@ public class Drive {
 
     */
 
-    public int fect(){
+    public int bect(){
         return( FRM.getCurrentPosition()/4 + BRM.getCurrentPosition()/4 + -FLM.getCurrentPosition()/4 +  -BLM.getCurrentPosition() / 4);
     }
-    public int bect(){
+    public int fect(){
         return( FLM.getCurrentPosition()/4 +  BLM.getCurrentPosition()/4 + -FRM.getCurrentPosition()/4 + -BRM.getCurrentPosition() / 4);
     }
-    public int rect(){
+    public int lect(){
         return( -FLM.getCurrentPosition()/4 +  BLM.getCurrentPosition()/4 + -FRM.getCurrentPosition()/4 + BRM.getCurrentPosition() / 4);
     }
-    public int lect(){
+    public int rect(){
         return( FLM.getCurrentPosition()/4 +  -BLM.getCurrentPosition()/4 + FRM.getCurrentPosition()/4 + -BRM.getCurrentPosition() / 4);
     }
     public double fcontrolp(double goal, double tune){
@@ -117,7 +117,7 @@ public class Drive {
         if((goal-fect())*tune>1){
             return 1;
         }
-        else if((-goal-fect())*tune<-1){
+        else if((goal-fect())*tune<-1){
             return -1;
         }
         else{

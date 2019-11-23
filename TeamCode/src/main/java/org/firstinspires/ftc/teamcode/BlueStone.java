@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 @Autonomous(name ="BlueStone", group = "autonomousBlue")
-public class BlueStone extends TeleBot {
+public class BlueStone extends AutoBot {
     private int blockposition;
     @Override
     public void run() {

@@ -7,10 +7,10 @@ public class TeleOp extends TeleBot {
     public void run(){
         while(opModeIsActive()){
             if(gamepad1.dpad_down){
-                drive.teledrive(.1,gamepad1.left_stick_x,gamepad1.right_trigger-gamepad1.left_trigger);
+                drive.teledrive(-.1,gamepad1.left_stick_x,gamepad1.right_trigger-gamepad1.left_trigger);
             }
             else if(gamepad1.dpad_up){
-                drive.teledrive(-.1,gamepad1.left_stick_x,gamepad1.right_trigger-gamepad1.left_trigger);
+                drive.teledrive(.1,gamepad1.left_stick_x,gamepad1.right_trigger-gamepad1.left_trigger);
             }/*
             else if(gamepad1.dpad_right){
                 drive.teledrive(gamepad1.left_stick_y,-.1,gamepad1.right_trigger,gamepad1.left_trigger);
@@ -19,7 +19,7 @@ public class TeleOp extends TeleBot {
                 drive.teledrive(gamepad1.left_stick_y,.1,gamepad1.right_trigger,gamepad1.left_trigger);
             }*/
             else {
-                drive.teledrive(gamepad1.left_stick_y,gamepad1.left_stick_x,gamepad1.right_trigger-gamepad1.left_trigger);
+                drive.teledrive(-gamepad1.left_stick_y,gamepad1.left_stick_x,gamepad1.right_trigger-gamepad1.left_trigger);
 
             }
 
@@ -49,8 +49,6 @@ public class TeleOp extends TeleBot {
 
             }
             //lift.manualmanual(gamepad2.right_stick_y);
-            gyro.gyrotelem();
-            sensor.telem();
             arm.telemetry();
             drive.ECtelem();
             lift.telem();
