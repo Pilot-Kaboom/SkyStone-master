@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode;
 
 
+import java.util.concurrent.BlockingDeque;
+
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name = "TeleOp",group = "teleop1")
 public class TeleOp extends TeleBot {
     @Override
@@ -23,8 +25,22 @@ public class TeleOp extends TeleBot {
 
             }
 
-            intake.intake(gamepad2.left_stick_y);
-            intake.lift(gamepad1.right_stick_y<-.5,gamepad1.right_stick_x<-.5,gamepad1.right_stick_x>.5);
+            intake.intake(gamepad1.right_stick_y);
+            if(sensor.block() && clawTime.seconds()> 2){
+                clawTime.reset();
+            }
+            else if(clawTime.seconds()<1) {
+                intake.lift(true,false,false);
+            }
+            else if (clawTime.seconds()<1.5){
+                arm.clawcon(true,false);
+            }
+            else if (clawTime.seconds()<1.7){
+                arm.clawcon(false,false);
+            }
+            else{
+                intake.lift(gamepad2.left_stick_y<-.5,gamepad2.left_stick_x<-.5,gamepad2.left_stick_x>.5);
+            }
             if (gamepad2.x){
                 arm.cap();
                 arm.clawcon(gamepad2.left_bumper, false);

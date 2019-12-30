@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
@@ -14,6 +15,7 @@ public class Sensors {
     private final DistanceSensor bd;*/
     private final ColorSensor rc;
     private final ColorSensor lc;
+    private final TouchSensor block;
     private final LinearOpMode sensor;
 
     public Sensors (LinearOpMode sensor){
@@ -23,6 +25,7 @@ public class Sensors {
         ld = sensor.hardwareMap.get(DistanceSensor.class, "bd");*/
         rc= sensor.hardwareMap.get(ColorSensor.class, "rc");
         lc= sensor.hardwareMap.get(ColorSensor.class, "lc");
+        block= sensor.hardwareMap.get(TouchSensor.class, "block");
         this.sensor=sensor;
     }
     public int rc(){
@@ -47,6 +50,9 @@ public class Sensors {
         else{
             return 2;
         }
+    }
+    public boolean block(){
+        return block.isPressed();
     }
     /*
     public double rd(){

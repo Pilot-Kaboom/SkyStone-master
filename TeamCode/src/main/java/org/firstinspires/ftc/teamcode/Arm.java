@@ -41,16 +41,16 @@ public class Arm {
             wristtime.reset();
         }
         if(wristside && elbowPosition()<.5){
-            wrist.setPosition(.23+wristcalibration);
+            wrist.setPosition(.4+wristcalibration);
         }
         else if (elbow.getPosition()<.5){
-            wrist.setPosition(.5+wristcalibration);
+            wrist.setPosition(.6+wristcalibration);
         }
         else{
-            wrist.setPosition(.51);
+            wrist.setPosition(.5);
         }
         if (init){
-            wrist.setPosition(.51);
+            wrist.setPosition(.5);
         }
     }
     public void cap(){
@@ -63,6 +63,10 @@ public class Arm {
             elbowback =!elbowback;
             elbowtime.reset();
         }
+        else if (back){
+            elbow.setPosition(1);
+            elbowtime.reset();
+        }
         if(increase && elbowtime.seconds()>.1){
             elbowcalibration=elbowcalibration+.01;
             elbowtime.reset();
@@ -71,14 +75,8 @@ public class Arm {
             elbowcalibration=elbowcalibration-.01;
             elbowtime.reset();
         }
-        if(highenough && elbowback && elbowPosition()>.9){
-            elbow.setPosition(.1+elbowcalibration);
-        }
-        else if(elbowback && elbowPosition()<.5){
-            elbow.setPosition(.1+elbowcalibration);
-        }
-        else if(elbowPosition()<.5 && !highenough){
-            elbow.setPosition(.1+elbowcalibration);
+        if(elbowback){
+            elbow.setPosition(0+elbowcalibration);
         }
         else{
             elbow.setPosition(1);
@@ -100,11 +98,14 @@ public class Arm {
             claw.setPosition(1);
         }
         else{
-            claw.setPosition(.2);
+            claw.setPosition(.75);
         }
         if(init){
             openclaw=true;
         }
+    }
+    public double clawPosition(){
+        return(claw.getPosition());
     }
     public void telemetry(){
         arm.telemetry.addData("wrist position",wrist.getPosition());

@@ -1,9 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
-        import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-@Autonomous(name ="autoForward", group = "autonomous1")
-public class auto extends TeleBot {
+@Autonomous(name ="autoBackward", group = "autonomous1")
+public class Auto2 extends TeleBot {
     @Override
     public void run() {
         time.reset();
@@ -12,8 +12,8 @@ public class auto extends TeleBot {
         }
         intake.intake(0);
         drive.resetEC();
-        while(opModeIsActive() && drive.bect()>-400){
-            drive.teledrive(.5,0,0);
+        while(opModeIsActive() && drive.bect()<400){
+            drive.teledrive(-.5,0,0);
         }
         drive.StopMotors();
 
