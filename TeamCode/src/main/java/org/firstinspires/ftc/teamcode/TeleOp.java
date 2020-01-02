@@ -29,10 +29,10 @@ public class TeleOp extends TeleBot {
             if(gamepad2.right_trigger>.1 && clawTime.seconds()> 2){
                 clawTime.reset();
             }
-            else if(clawTime.seconds()<1) {
+            else if(clawTime.seconds()<.5) {
                 intake.lift(true,false,false);
             }
-            else if (clawTime.seconds()<1.5){
+            else if (clawTime.seconds()<1){
                 arm.clawcon(false,false, true);
             }
             else if (gamepad2.x){
@@ -40,6 +40,21 @@ public class TeleOp extends TeleBot {
                 arm.clawcon(gamepad2.left_bumper,false,  false);
                 //lift.manual(gamepad2.left_stick_y, arm.elbowPosition()<.5);
                 lift.manualmanual(gamepad2.right_stick_y);
+            }
+            else if (arm.elbowPosition()>.5){
+                if(gamepad2.right_stick_y<0){
+                    lift.manualmanual(gamepad2.right_stick_y*5);
+                }
+                else{
+                    lift.manualmanual(gamepad2.right_stick_y*2);
+
+                }
+                //lift.manual(gamepad2.right_stick_y, arm.elbowPosition()<.5);
+                arm.clawcon(gamepad2.left_bumper,false, false);
+                arm.elbowcon(gamepad2.right_bumper,lift.echight()>500, false, false, false);
+                arm.wristcon(false,lift.echight()>500, false, gamepad1.left_bumper, gamepad1.right_bumper);
+
+                intake.lift(gamepad1.right_stick_y<-.5,gamepad1.right_stick_x<-.5,gamepad1.right_stick_x>.5);
             }
             else{
                 lift.manualmanual(gamepad2.right_stick_y);

@@ -17,6 +17,7 @@ public class Lift {
     private boolean dTimeOp;
     private double dCount1;
     private double dCount2;
+    private double blockHight;
     private ElapsedTime armreallyready = new ElapsedTime();
     private ElapsedTime highttime = new ElapsedTime();
     private ElapsedTime manualtime= new ElapsedTime();
@@ -37,7 +38,34 @@ public class Lift {
             right.setPower(power-.1);
             left.setPower(-power+.1);
         }
+    }/*
+    public void autoHight(){
+        if(stackHight()>110){
+            right.setPower(-.05);
+            left.setPower(.05);
+        }
+        else if(stackHight()<90){
+            right.setPower(-.4);
+            left.setPower(.4);
+        }
+        else{
+            right.setPower(-.1);
+            left.setPower(.1);
+        }
+        if (stackHight()>200){
+            blockHight=blockHight+200;
+        }
+        else if(stackHight()<0){
+            blockHight=blockHight-200;
+        }
+        else{
+            blockHight=blockHight;
+        }
+
     }
+    public double stackHight(){
+        return ((echight()/1.575)-blockHight+100);
+    }*/
     public void manual(double input, boolean inside){
         if(input>.1 && manualtime.seconds()>.05){
             manual = manual+150;
@@ -129,11 +157,13 @@ public class Lift {
     }
 
     public double echight(){
+
         return (right.getCurrentPosition());
     }
     public void telem(){
         lift.telemetry.addData("velocity", dControl());
         lift.telemetry.addData("manual delta", manual-right.getCurrentPosition());
+        //lift.telemetry.addData("auto adjust hight",stackHight());
         lift.telemetry.addData("lift hight",right.getCurrentPosition());
     }
 
