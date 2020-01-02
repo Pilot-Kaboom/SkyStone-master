@@ -8,21 +8,11 @@ public class TeleOp extends TeleBot {
     @Override
     public void run(){
         while(opModeIsActive()){
-            if(gamepad1.dpad_down){
-                drive.teledrive(-.1,gamepad1.left_stick_x,gamepad1.right_trigger-gamepad1.left_trigger);
-            }
-            else if(gamepad1.dpad_up){
-                drive.teledrive(.1,gamepad1.left_stick_x,gamepad1.right_trigger-gamepad1.left_trigger);
-            }
-            else if(gamepad1.dpad_left){
-                drive.teledrive(gamepad1.left_stick_y,-.1,gamepad1.right_trigger-gamepad1.left_trigger);
-            }
-            else if(gamepad1.dpad_right){
-                drive.teledrive(gamepad1.left_stick_y,.1,gamepad1.right_trigger-gamepad1.left_trigger);
+            if(gamepad1.a){
+                drive.teledrive(-gamepad1.left_stick_y*.2,gamepad1.left_stick_x*.2,(gamepad1.right_trigger-gamepad1.left_trigger)*.2);
             }
             else {
                 drive.teledrive(-gamepad1.left_stick_y,gamepad1.left_stick_x,gamepad1.right_trigger-gamepad1.left_trigger);
-
             }
 
             intake.intake(gamepad2.left_stick_y);
