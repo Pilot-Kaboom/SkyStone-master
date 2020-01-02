@@ -29,22 +29,28 @@ public class Lift {
         this.lift=lift;
     }
     public void manualmanual(double power){
-        right.setPower(-power);
-        left.setPower(power);
+        if(echight()>0 && power>0){
+            right.setPower(0);
+            left.setPower(0);
+        }
+        else{
+            right.setPower(power-.1);
+            left.setPower(-power+.1);
+        }
     }
     public void manual(double input, boolean inside){
         if(input>.1 && manualtime.seconds()>.05){
-            manual = manual-75;
+            manual = manual+150;
             manualtime.reset();
         }
         else if(input<-.1&& manualtime.seconds()>.05){
-            manual = manual+75;
+            manual = manual-150;
             manualtime.reset();
         }
-        if(manual<-150){
-            manual=-150;
+        if(manual>10){
+            manual=10;
         }
-        driver(manual, false, inside);
+        driver(manual, inside);
     }
     public void hight(boolean up, boolean down){
         if(up && highttime.seconds()>.25){
@@ -58,22 +64,18 @@ public class Lift {
         //controller(level);
 
     }
-    private void driver(double goal, boolean reset, boolean inside){
-        if(pControl(goal)>1){
-            left.setPower(-1);
-            right.setPower(1);
+    private void driver(double goal, boolean inside){
+        if(pControl(goal)<-1){
+            left.setPower(1);
+            right.setPower(-1);
         }
-        else if(reset && pControl(goal)<-.5){
-            left.setPower(.5);
-            right.setPower(-.5);
+        else if(inside && pControl(goal)>.65){
+            left.setPower(-.65);
+            right.setPower(.65);
         }
-        else if(inside && pControl(goal)<-.4){
-            left.setPower(.4);
-            right.setPower(-.4);
-        }
-        else if(!inside && pControl(goal)<-.1){
-            left.setPower(.1);
-            right.setPower(-.1);
+        else if(!inside && pControl(goal)>.15){
+            left.setPower(-.15);
+            right.setPower(.15);
         }
         else{
             left.setPower(-1*(pControl(goal)));
@@ -81,6 +83,7 @@ public class Lift {
         }
     }
     private double pControl(double goal){
+
         return((goal-right.getCurrentPosition())*.0075);
     }
     private double dControl(){
@@ -106,16 +109,16 @@ public class Lift {
     }*/
     public void grab(boolean close, boolean armready){
         if(!armready) {
-            driver(550, true, false);
+            driver(550, true);
             manual=550;
             armreallyready.reset();
         }
         else if(armreallyready.seconds()>1){
-            driver(150, true, false);
+            driver(150, true);
             manual=150;
         }
         else{
-            driver(550, true, false);
+            driver(550, true);
             manual=550;
         }
     }

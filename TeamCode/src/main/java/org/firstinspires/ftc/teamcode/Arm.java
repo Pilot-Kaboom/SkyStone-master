@@ -28,29 +28,22 @@ public class Arm {
     }
 // Wrist Wrist Wrist Wrist Wrist Wrist Wrist Wrist Wrist Wrist Wrist Wrist Wrist
     public void wristcon(boolean side, boolean highenough, boolean init, boolean increase, boolean decrease){
-        if(side&& wristtime.seconds()>.2){
-            wristside =!wristside;
-            wristtime.reset();
-        }
         if(increase&& wristtime.seconds()>.1){
-            wristcalibration=wristcalibration+.01;
+            wristcalibration=wristcalibration+.05;
             wristtime.reset();
         }
         else if(decrease&& wristtime.seconds()>.1){
-            wristcalibration=wristcalibration-.01;
+            wristcalibration=wristcalibration-.05;
             wristtime.reset();
         }
-        if(wristside && elbowPosition()<.5){
-            wrist.setPosition(.4+wristcalibration);
-        }
-        else if (elbow.getPosition()<.5){
-            wrist.setPosition(.6+wristcalibration);
+        if(elbowPosition()>.5){
+            wrist.setPosition(.45+wristcalibration);
         }
         else{
-            wrist.setPosition(.5);
+            wrist.setPosition(.45);
         }
         if (init){
-            wrist.setPosition(.5);
+            wrist.setPosition(.45);
         }
     }
     public void cap(){
@@ -59,12 +52,11 @@ public class Arm {
     }
     //Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow Elbow
     public void elbowcon(boolean back, boolean highenough, boolean init, boolean increase, boolean decrease){
-        if(back&& elbowtime.seconds()>.2){
+        if(back&& elbowtime.seconds()>.5){
             elbowback =!elbowback;
             elbowtime.reset();
         }
         else if (back){
-            elbow.setPosition(1);
             elbowtime.reset();
         }
         if(increase && elbowtime.seconds()>.1){
@@ -75,33 +67,38 @@ public class Arm {
             elbowcalibration=elbowcalibration-.01;
             elbowtime.reset();
         }
-        if(elbowback){
-            elbow.setPosition(0+elbowcalibration);
+        if(elbowback && back){
+            elbow.setPosition(.95);
         }
-        else{
-            elbow.setPosition(1);
+        else if (elbowback) {
+            elbow.setPosition(.73);
+        } else {
+            elbow.setPosition(0);
         }
         if(init){
-            elbow.setPosition(1);
+            elbow.setPosition(0);
         }
     }
     public double elbowPosition(){
         return(elbow.getPosition());
     }
     //Claw Claw Claw Claw Claw Claw Claw Claw Claw Claw Claw Claw Claw Claw Claw
-    public void clawcon(boolean open, boolean init){
+    public void clawcon(boolean open, boolean init, boolean autoinit){
         if(open && time.seconds()>.25){
             openclaw = !openclaw;
             time.reset();
         }
         if(openclaw){
-            claw.setPosition(1);
+            claw.setPosition(.25);
         }
         else{
-            claw.setPosition(.75);
+            claw.setPosition(0);
         }
         if(init){
             openclaw=true;
+        }
+        else if (autoinit){
+            openclaw=false;
         }
     }
     public double clawPosition(){

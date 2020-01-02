@@ -24,20 +24,21 @@ public class Intake {
     }
     public void lift(boolean up,boolean left, boolean right){
         if(up){
-            leftup.setPosition(-1);
-            rightup.setPosition(.225);
+            rightup.setPosition(.23);
+            leftup.setPosition(.255);
+
         }
         else if(left){
-            leftup.setPosition(-1);
-            rightup.setPosition(-1);
+            leftup.setPosition(0);
+            rightup.setPosition(0);
         }
         else if(right){
             rightup.setPosition(.225);
             leftup.setPosition(.5);
         }
         else{
-            rightup.setPosition(-1);
-            leftup.setPosition(.5);
+            rightup.setPosition(.05);
+            leftup.setPosition(.52);
         }
     }
     public void telemetry(){

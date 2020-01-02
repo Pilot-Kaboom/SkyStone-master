@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
@@ -15,7 +16,7 @@ public class Sensors {
     private final DistanceSensor bd;*/
     private final ColorSensor rc;
     private final ColorSensor lc;
-    private final TouchSensor block;
+    private final DigitalChannel block;
     private final LinearOpMode sensor;
 
     public Sensors (LinearOpMode sensor){
@@ -25,7 +26,7 @@ public class Sensors {
         ld = sensor.hardwareMap.get(DistanceSensor.class, "bd");*/
         rc= sensor.hardwareMap.get(ColorSensor.class, "rc");
         lc= sensor.hardwareMap.get(ColorSensor.class, "lc");
-        block= sensor.hardwareMap.get(TouchSensor.class, "block");
+        block= sensor.hardwareMap.get(DigitalChannel.class, "block");
         this.sensor=sensor;
     }
     public int rc(){
@@ -51,8 +52,11 @@ public class Sensors {
             return 2;
         }
     }
+    public void touchInit(){
+        block.setMode(DigitalChannel.Mode.INPUT);
+    }
     public boolean block(){
-        return block.isPressed();
+        return block.getState();
     }
     /*
     public double rd(){
@@ -78,6 +82,7 @@ public class Sensors {
         sensor.telemetry.addData("left red color", lc.red());
         sensor.telemetry.addData("right color alpha", rc());
         sensor.telemetry.addData("left color alpha", lc());
+        sensor.telemetry.addData("block in intake",block());
     }
 
 
