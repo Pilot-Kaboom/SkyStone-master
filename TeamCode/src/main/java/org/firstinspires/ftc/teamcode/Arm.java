@@ -71,7 +71,7 @@ public class Arm {
             elbow.setPosition(.95);
         }
         else if (elbowback) {
-            elbow.setPosition(.73);
+            elbow.setPosition(.71);
         } else {
             elbow.setPosition(0);
         }
