@@ -43,7 +43,7 @@ public class TeleOp extends TeleBot {
                 arm.elbowcon(gamepad2.right_bumper,lift.echight()>500, false, false, false);
                 //arm.wristcon(false,lift.echight()>500, false, gamepad1.left_bumper, gamepad1.right_bumper);
 
-                intake.lift(gamepad1.right_stick_y<-.5,gamepad1.right_stick_x<-.5,gamepad1.right_stick_x>.5);
+                intake.lift(gamepad1.x,false,false);
             }
             else{
                 lift.manualmanual(gamepad2.right_stick_y);
@@ -52,7 +52,7 @@ public class TeleOp extends TeleBot {
                 arm.elbowcon(gamepad2.right_bumper,lift.echight()>500, false, false, false);
                 arm.wristcon(false,lift.echight()>500, false, gamepad1.left_bumper, gamepad1.right_bumper);
 
-                intake.lift(gamepad1.right_stick_y<-.5,gamepad1.right_stick_x<-.5,gamepad1.right_stick_x>.5);
+                intake.lift(gamepad1.x,false,false);
             }
             /*
             else if(gamepad2.left_trigger>.2){

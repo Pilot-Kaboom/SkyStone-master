@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 @Autonomous(name ="autoBackward", group = "autonomous1")
-public class Auto2 extends TeleBot {
+public class Auto2 extends AutoBot {
     @Override
     public void run() {
         time.reset();

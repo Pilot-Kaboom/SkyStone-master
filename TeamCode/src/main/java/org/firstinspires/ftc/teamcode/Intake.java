@@ -27,7 +27,7 @@ public class Intake {
     }
     public void lift(boolean up,boolean left, boolean right){
         if(up){
-            rightup.setPosition(.23);
+            rightup.setPosition(.24);
             leftup.setPosition(.255);
 
         }
@@ -46,7 +46,7 @@ public class Intake {
     }
     public void capper(boolean place){
         if(place){
-            cap.setPosition(0);
+            cap.setPosition(.97);
         }
         else{
             cap.setPosition(.5);
