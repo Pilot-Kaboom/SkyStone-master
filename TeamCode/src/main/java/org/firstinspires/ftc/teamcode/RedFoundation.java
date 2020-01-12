@@ -2,13 +2,13 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-@Autonomous(name ="BlueFoundation", group = "autonomousBlue")
-public class BlueFoundation extends AutoBot {
+@Autonomous(name ="RedFoundation", group = "autonomousRed")
+public class RedFoundation extends AutoBot {
     @Override
     public void run() {
-        while (drive.rect() > -350 && opModeIsActive()) {
+        while (drive.rect() < 350 && opModeIsActive()) {
             intake.intake(1);
-            drive.teledrive(0,drive.rcontrolp(-500,.0005),0);
+            drive.teledrive(0,drive.rcontrolp(500,.0005),0);
         }
         intake.intake(0);
         drive.StopMotors();
@@ -28,17 +28,17 @@ public class BlueFoundation extends AutoBot {
         time.reset();
         intake.lift(false, false,false);
         sleep(350);
-        while(drive.tect()>-400 && opModeIsActive()){
-            drive.teledrive(-.67,.67,-.45);
+        while(drive.tect()<400 && opModeIsActive()){
+            drive.teledrive(-.67,-.67,.45);
         }
-        while(drive.tect()>-500 && opModeIsActive()){
-            drive.teledrive(-.25,.75,-.67);
+        while(drive.tect()<575 && opModeIsActive()){
+            drive.teledrive(-.25,-.75,.67);
         }
         drive.StopMotors();
         drive.resetEC();
         time.reset();
         while(drive.fect()<500 && opModeIsActive()){
-            drive.teledrive(.75,0,0);
+            drive.teledrive(.75,.5,0);
         }
         while(time.seconds() < .5&& opModeIsActive()){
             drive.teledrive(1,0,0);
@@ -48,8 +48,8 @@ public class BlueFoundation extends AutoBot {
         drive.resetEC();
         time.reset();
         sleep(350);
-        while (drive.lect()<1150 && opModeIsActive()){
-            drive.teledrive(0,-.75,0);
+        while (drive.rect()<1150 && opModeIsActive()){
+            drive.teledrive(0,.75,0);
         }
         intake.lift(false,false,false);
         drive.StopMotors();

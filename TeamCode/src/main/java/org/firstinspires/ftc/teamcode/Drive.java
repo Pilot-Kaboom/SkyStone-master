@@ -102,6 +102,10 @@ public class Drive {
     public int rect(){
         return( FLM.getCurrentPosition()/4 +  -BLM.getCurrentPosition()/4 + FRM.getCurrentPosition()/4 + -BRM.getCurrentPosition() / 4);
     }
+    public int tect(){
+        return( (FLM.getCurrentPosition()/4 +  BLM.getCurrentPosition()/4) + (FRM.getCurrentPosition()/4 +BRM.getCurrentPosition() / 4));
+
+    }
     public double fcontrolp(double goal, double tune){
         if(goal-(rect())*tune>1){
             return 1;
@@ -149,6 +153,7 @@ public class Drive {
         adrive.telemetry.addData("BEC", bect());
         adrive.telemetry.addData("REC", rect());
         adrive.telemetry.addData("LEC", lect());
+        adrive.telemetry.addData("TEC",tect());
         adrive.telemetry.addData("FLM", FLM.getCurrentPosition());
         adrive.telemetry.addData("BLM", BLM.getCurrentPosition());
         adrive.telemetry.addData("BRM", BRM.getCurrentPosition());

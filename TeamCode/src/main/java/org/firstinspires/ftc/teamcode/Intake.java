@@ -27,7 +27,7 @@ public class Intake {
     }
     public void lift(boolean up,boolean left, boolean right){
         if(up){
-            rightup.setPosition(.24);
+            rightup.setPosition(.253);
             leftup.setPosition(.255);
 
         }

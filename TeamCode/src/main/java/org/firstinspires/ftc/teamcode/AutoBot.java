@@ -16,6 +16,8 @@ public abstract class AutoBot extends compiler {
         drive.RunInPower();
         while(!opModeIsActive()){
             lift.resetEC();
+            drive.resetEC();
+            intake.lift(false,false,false);
             arm.clawcon(false, false,true);
             arm.elbowcon(false,false,true, false, false);
             arm.wristcon(false,false,true, false,false);
