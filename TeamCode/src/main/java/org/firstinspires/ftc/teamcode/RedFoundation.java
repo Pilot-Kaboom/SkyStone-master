@@ -31,8 +31,8 @@ public class RedFoundation extends AutoBot {
         while(drive.tect()<400 && opModeIsActive()){
             drive.teledrive(-.67,-.67,.45);
         }
-        while(drive.tect()<575 && opModeIsActive()){
-            drive.teledrive(-.25,-.75,.67);
+        while(drive.tect()<600 && opModeIsActive()){
+            drive.teledrive(-.25,-.67,.67);
         }
         drive.StopMotors();
         drive.resetEC();

@@ -49,7 +49,7 @@ public class BlueFoundation extends AutoBot {
         time.reset();
         sleep(350);
         while (drive.lect()<1150 && opModeIsActive()){
-            drive.teledrive(0,-.75,0);
+            drive.teledrive(0,-.75,.35);
         }
         intake.lift(false,false,false);
         drive.StopMotors();

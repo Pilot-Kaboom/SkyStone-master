@@ -14,7 +14,7 @@ public abstract class AutoBot extends compiler {
         intake=new Intake(this);
         sensor=new Sensors(this);
         drive.RunInPower();
-        while(!opModeIsActive()){
+        while(!isStarted() && !isStopRequested()){
             lift.resetEC();
             drive.resetEC();
             intake.lift(false,false,false);
