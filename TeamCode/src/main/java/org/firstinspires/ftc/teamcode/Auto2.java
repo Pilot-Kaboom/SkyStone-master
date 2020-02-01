@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 @Autonomous(name ="autoBackward", group = "autonomous1")
 public class Auto2 extends AutoBot {
     @Override
-    public void run() {
+    public void run() {/*
         time.reset();
         while(opModeIsActive() && time.seconds()<.5){
             intake.intake(1);
@@ -16,6 +16,6 @@ public class Auto2 extends AutoBot {
             drive.teledrive(-.5,0,0);
         }
         drive.StopMotors();
-
+*/
     }
 }

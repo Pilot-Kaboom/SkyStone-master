@@ -5,7 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 @Autonomous(name ="BlueFoundation", group = "autonomousBlue")
 public class BlueFoundation extends AutoBot {
     @Override
-    public void run() {
+    public void run(){
+        /*
         while (drive.rect() > -350 && opModeIsActive()) {
             intake.intake(1);
             drive.teledrive(0,drive.rcontrolp(-500,.0005),0);
@@ -58,6 +59,6 @@ public class BlueFoundation extends AutoBot {
         while (drive.bect()<800&& opModeIsActive()){
             drive.teledrive(-.75,0,0);
         }
-        drive.StopMotors();
+        drive.StopMotors();*/
     }
 }

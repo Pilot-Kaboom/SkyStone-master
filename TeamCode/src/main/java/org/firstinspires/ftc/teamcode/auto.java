@@ -5,7 +5,7 @@ package org.firstinspires.ftc.teamcode;
 @Autonomous(name ="autoForward", group = "autonomous1")
 public class auto extends TeleBot {
     @Override
-    public void run() {
+    public void run() {/*
         time.reset();
         while(opModeIsActive() && time.seconds()<.5){
             intake.intake(1);
@@ -16,6 +16,6 @@ public class auto extends TeleBot {
             drive.teledrive(.5,0,0);
         }
         drive.StopMotors();
-
+*/
     }
 }

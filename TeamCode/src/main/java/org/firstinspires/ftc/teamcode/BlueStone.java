@@ -7,6 +7,7 @@ public class BlueStone extends AutoBot {
     private int blockposition;
     @Override
     public void run() {
+        /*
         while(opModeIsActive()){
             while(drive.fect()<2000){
                 drive.teledrive(drive.fcontrolp(2000, .0075),0,0);
@@ -37,7 +38,7 @@ public class BlueStone extends AutoBot {
             }
             drive.StopMotors();
 
-        }
+        }*/
 
 
     }

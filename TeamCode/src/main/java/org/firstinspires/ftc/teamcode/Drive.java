@@ -40,24 +40,7 @@ public class Drive {
         FRM.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
         adrive.idle();
     }
-    public void goForward(double power){
-        FLM.setPower(-power);
-        FRM.setPower(power);
-        BLM.setPower(-power);
-        BRM.setPower(power);
-    }
-    public void goRight(double power){
-        FLM.setPower(-power);
-        FRM.setPower(-power);
-        BLM.setPower(power);
-        BRM.setPower(power);
-    }
-    public void turnClockwise(double power){
-        FLM.setPower(-power);
-        FRM.setPower(-power);
-        BLM.setPower(-power);
-        BRM.setPower(-power);
-    }
+
     public void StopMotors(){
         FLM.setPower(0);
         FRM.setPower(0);
@@ -70,17 +53,18 @@ public class Drive {
         BLM.setPower(forward - right  +turnC);
         BRM.setPower(-forward - right + turnC);
     }
-    public void diaginalFRtoBL(double power){
-        FRM.setPower(power);
-        BLM.setPower(power);
-        FLM.setPower(0);
-        BRM.setPower(0);
-    }
-    public void diaginalFLtoBR(double power){
-        FLM.setPower(power);
-        BRM.setPower(power);
-        FRM.setPower(0);
-        BLM.setPower(0);
+    public void ECtelem() {
+
+        adrive.telemetry.addData("FLM", FLM.getCurrentPosition());
+        adrive.telemetry.addData("BLM", BLM.getCurrentPosition());
+        adrive.telemetry.addData("BRM", BRM.getCurrentPosition());
+        adrive.telemetry.addData("FRM", FRM.getCurrentPosition());
+        /*adrive.telemetry.addData("FEC", fect());
+        adrive.telemetry.addData("BEC", bect());
+        adrive.telemetry.addData("REC", rect());
+        adrive.telemetry.addData("LEC", lect());
+        adrive.telemetry.addData("TEC",tect());*/
+        //telemetry.addData("ods", ODS.getLightDetected());
     }
     /*
      FLM.setPower(gamepad1.left_stick_y + -gamepad1.left_stick_x +(gamepad1.right_stick_y*.35 + -gamepad1.right_stick_x*.35)+ (gamepad1.left_trigger + -gamepad1.right_trigger* .5));
@@ -89,7 +73,7 @@ public class Drive {
      BLM.setPower(gamepad1.left_stick_y + gamepad1.left_stick_x +(gamepad1.right_stick_y*.35 + gamepad1.right_stick_x*.35)+ (gamepad1.left_trigger + -gamepad1.right_trigger* .5));
 
     */
-
+/*
     public int bect(){
         return( FRM.getCurrentPosition()/4 + BRM.getCurrentPosition()/4 + -FLM.getCurrentPosition()/4 +  -BLM.getCurrentPosition() / 4);
     }
@@ -127,6 +111,37 @@ public class Drive {
         else{
             return ((goal-fect())*tune);
         }
+    }*/
+    /*
+    public void goForward(double power){
+        FLM.setPower(-power);
+        FRM.setPower(power);
+        BLM.setPower(-power);
+        BRM.setPower(power);
+    }
+    public void goRight(double power){
+        FLM.setPower(-power);
+        FRM.setPower(-power);
+        BLM.setPower(power);
+        BRM.setPower(power);
+    }
+    public void turnClockwise(double power){
+        FLM.setPower(-power);
+        FRM.setPower(-power);
+        BLM.setPower(-power);
+        BRM.setPower(-power);
+    }
+    public void diaginalFRtoBL(double power){
+        FRM.setPower(power);
+        BLM.setPower(power);
+        FLM.setPower(0);
+        BRM.setPower(0);
+    }
+    public void diaginalFLtoBR(double power){
+        FLM.setPower(power);
+        BRM.setPower(power);
+        FRM.setPower(0);
+        BLM.setPower(0);
     }
     public void ECforward(double distance, double power){
         while(fect() < distance){
@@ -147,17 +162,6 @@ public class Drive {
         while(lect() < distance){
             goRight(-power);
         }
-    }
-    public void ECtelem() {
-        adrive.telemetry.addData("FEC", fect());
-        adrive.telemetry.addData("BEC", bect());
-        adrive.telemetry.addData("REC", rect());
-        adrive.telemetry.addData("LEC", lect());
-        adrive.telemetry.addData("TEC",tect());
-        adrive.telemetry.addData("FLM", FLM.getCurrentPosition());
-        adrive.telemetry.addData("BLM", BLM.getCurrentPosition());
-        adrive.telemetry.addData("BRM", BRM.getCurrentPosition());
-        adrive.telemetry.addData("FRM", FRM.getCurrentPosition());
-        //telemetry.addData("ods", ODS.getLightDetected());
-    }
+    }*/
+
 }
