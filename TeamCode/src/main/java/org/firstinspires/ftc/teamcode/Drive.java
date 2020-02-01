@@ -9,6 +9,8 @@ public class Drive {
     private final DcMotor FLM;
     private final DcMotor BLM;
     private final DcMotor FRM;
+    private double startx;
+    private double distance;
     private final LinearOpMode adrive;
 
     public Drive(LinearOpMode adrive){
@@ -40,12 +42,36 @@ public class Drive {
         FRM.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
         adrive.idle();
     }
-
     public void StopMotors(){
         FLM.setPower(0);
         FRM.setPower(0);
         BLM.setPower(0);
         BRM.setPower(0);
+    }
+
+    public double odoHeadding(){
+        return((FRM.getCurrentPosition()-FLM.getCurrentPosition())*.01);
+    }
+    public double odoForward(){
+        return(((FRM.getCurrentPosition()+FLM.getCurrentPosition())*.5)*.01);
+    }
+    public double odoRight(){
+        return(((BRM.getCurrentPosition())-(odoHeadding()*.5))*.01);
+    }
+    public double odoX(){
+        return ((odoRight()*Math.cos(odoHeadding()))+(odoForward()*Math.sin(odoHeadding())))+startx;
+    }
+    public double odoY(){
+        return((odoForward()*Math.cos(odoHeadding()))+(odoRight()*Math.sin(odoHeadding())));
+    }
+    public void odoDrive(double x, double y,double headding){
+        distance=((Math.sqrt((x*x)+(y*y)))-(Math.sqrt((odoX()*odoX())+(odoY()*odoY()))));
+        if(distance<10){
+
+        }
+        else{
+
+        }
     }
     public void teledrive(double forward, double right, double turnC){
         FLM.setPower(forward + right + turnC);
