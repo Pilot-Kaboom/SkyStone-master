@@ -29,15 +29,15 @@ public class RedFoundation extends AutoBot {
         intake.lift(false, false,false);
         sleep(350);
         while(drive.tect()<400 && opModeIsActive()){
-            drive.teledrive(-.67,-.67,.45);
+            drive.teledrive(-.67,-.67,.5);
         }
-        while(drive.tect()<600 && opModeIsActive()){
-            drive.teledrive(-.25,-.67,.67);
+        while(drive.tect()<750 && opModeIsActive()){
+            drive.teledrive(-.25,-.5,.7);
         }
         drive.StopMotors();
         drive.resetEC();
         time.reset();
-        while(drive.fect()<500 && opModeIsActive()){
+        while(drive.fect()<550 && opModeIsActive()){
             drive.teledrive(.75,.5,0);
         }
         while(time.seconds() < .5&& opModeIsActive()){
